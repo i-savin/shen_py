@@ -30,4 +30,30 @@ def div_mod(a,b):
         c=c-d
     return (div1,c)
 
-print(div_mod(17,5))
+def fibo_logn(n):
+    if n == 0:
+        return 0
+    if n == 1 or n == 2:
+        return 1
+    fn,fn1,f1n=1,1,0    #итоговая матрица
+    sn,sn1,s1n=1,1,0    #матрица квадратов
+    k = n
+    count = 0;
+    while k != 0:
+        count = count + 1
+        if k % 2 == 0:
+            an1 = sn1 * sn1 + sn * sn
+            an = sn1 * sn + sn * s1n
+            a1n = sn * sn + s1n * s1n
+            sn,sn1,s1n=an,an1,a1n
+            k = k / 2
+        else:
+            an1 = fn1 * sn1 + fn * sn
+            an = fn * sn1 + f1n * sn
+            a1n = fn * sn + f1n * s1n
+            fn,fn1,f1n = an,an1,a1n
+            k = k - 1
+    print count
+    return fn
+
+print fibo_logn(1000)
