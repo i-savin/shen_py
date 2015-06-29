@@ -96,6 +96,9 @@ def factor_sum_optimized(n):
     return result
 
 def euclide(m,n):
+    """
+    1.1.14. Алгоритмя Евклида с mod
+    """
     if (m > n):
         a = m
         b = n
@@ -110,4 +113,20 @@ def euclide(m,n):
             b = r
     return b
 
-print euclide(119,544)
+def euclide2(m,n):
+    """
+    1.1.13. Алгоритм Евклида без mod, только на вычитании
+    """
+    a,b = m,n
+    while a != 0 and b != 0:
+        if a > b:
+            a = a - b
+        else:
+            b = b - a
+    if a == 0:
+        return b
+    if b == 0:
+        return a
+    return 1
+
+print euclide2(119,544)
