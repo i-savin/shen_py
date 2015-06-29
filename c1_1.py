@@ -31,6 +31,9 @@ def div_mod(a,b):
     return (div1,c)
 
 def fibo_logn(n):
+    """
+    1.1.10. Вычислить n-е число Фиббоначчи за logn
+    """
     if n == 0:
         return 0
     if n == 1 or n == 2:
@@ -56,4 +59,39 @@ def fibo_logn(n):
     print count
     return fn
 
-print fibo_logn(1000)
+def factorial(n):
+    if n < 2:
+        return 1
+    return factorial(n - 1) * n
+
+def factor_sum(n):
+    """
+    1.1.11. Вычислить 1/0! + 1/1! + 1/2! ... + ... 1/n!
+    """
+    result = 0.0
+    for i in range(n+1):
+        print i
+        result = result + 1.0 / factorial(i)
+    return result
+
+def factor_sum_optimized(n):
+    """
+    1.1.12. Вычислить 1/0! + 1/1! + 1/2! ... + ... 1/n! за n операций
+    """
+    if n == 0:
+        return 1;
+    if n == 1:
+        return 2;
+
+    factorial = 1;
+    result = 2.0
+    count = 0;
+
+    for i in range(2, n + 1):
+        count = count + 1
+        factorial = factorial * i
+        result = result + 1.0 / (factorial)
+
+    print count
+    return result
+print factor_sum_optimized(40)
