@@ -40,8 +40,9 @@ def euclide(m,n):
     r = a % b
     while r != 0:
         r = a % b
-        a = b
-        b = r
-    return
+        if r != 0:
+            a = b
+            b = r
+    return b
 
-euclide(36,18)
+print euclide(119,544)
