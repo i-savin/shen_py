@@ -30,4 +30,18 @@ def div_mod(a,b):
         c=c-d
     return (div1,c)
 
-print(div_mod(17,5))
+def euclide(m,n):
+    if (m > n):
+        a = m
+        b = n
+    else:
+        a = n
+        b = m
+    r = a % b
+    while r != 0:
+        r = a % b
+        a = b
+        b = r
+    return
+
+euclide(36,18)
