@@ -129,7 +129,10 @@ def euclide2(a, b):
         return m
 
 def euclide3(a, b):
-    print [a, b]
+    """
+    1.1.15. Даны a,b не равные нулю одновременно. Найти НОД d и такие целые числа x и y,
+    что d = a * x + b * y. Не использовать деление с остатком
+    """
     m, n, p, q, r, s = a, b, 1, 0, 0, 1
     # m = p * a + q * b
     # n = r * a + s * b
@@ -148,7 +151,10 @@ def euclide3(a, b):
         return [m, p, q]
 
 def euclide4(a, b):
-    print [a, b]
+    """
+    1.1.16. Даны a,b не равные нулю одновременно. Найти НОД d и такие целые числа x и y,
+    что d = a * x + b * y. Использовать деление с остатком
+    """
     m = a
     n = b
 
@@ -169,8 +175,33 @@ def euclide4(a, b):
             s = s1
     return [n, r, s]
 
+def euclide5(a, b):
+    """
+    1.1.18. Даны a,b не равные нулю одновременно. Найти НОД d, не используя
+    деление с остатком, а используя проверку четности деление пополам, а также
+    соотношения НОД(2a,2b) = 2НОД(a,b) и НОД(2a,b) = НОД(a,b) для нечетного b
+    """
+    m, n, d = a, b, 1
+    while m != 0 and n != 0:
+        if m % 2 == 0 and n % 2 == 0:
+            d = d * 2
+            m = m / 2
+            n = n / 2
+        elif m % 2 == 0 and n % 2 != 0:
+            m = m / 2
+        elif m % 2 != 0 and n % 2 == 0:
+            n = n / 2
+        else:
+            if m > n:
+                m = m - n
+            else:
+                n = n - m
+    if m == 0:
+        return d * n
+    else:
+        return d * m
 
 # print euclide3(119,544)
 # print euclide4(119,544)
 print euclide3(6, 21)
-print euclide4(6, 21)
+print euclide5(7, 21)
