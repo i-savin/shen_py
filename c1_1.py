@@ -95,38 +95,82 @@ def factor_sum_optimized(n):
     print count
     return result
 
-def euclide(m,n):
+def euclide(a, b):
     """
     1.1.14. Алгоритмя Евклида с mod
     """
-    if (m > n):
-        a = m
-        b = n
+    if (a > b):
+        m = a
+        n = b
     else:
-        a = n
-        b = m
-    r = a % b
+        m = b
+        n = a
+    r = m % n
     while r != 0:
-        r = a % b
+        r = m % n
         if r != 0:
-            a = b
-            b = r
-    return b
+            m = n
+            n = r
+    return n
 
-def euclide2(m,n):
+def euclide2(a, b):
     """
     1.1.13. Алгоритм Евклида без mod, только на вычитании
     """
-    a,b = m,n
-    while a != 0 and b != 0:
-        if a > b:
-            a = a - b
+    m, n = a, b
+    while m != 0 and n != 0:
+        if m > n:
+            m = m - n
         else:
-            b = b - a
-    if a == 0:
-        return b
-    if b == 0:
-        return a
-    return 1
+            n = n - m
+    if m == 0:
+        return n
+    if n == 0:
+        return m
 
-print euclide2(119,544)
+def euclide3(a, b):
+    print [a, b]
+    m, n, p, q, r, s = a, b, 1, 0, 0, 1
+    # m = p * a + q * b
+    # n = r * a + s * b
+    while m != 0 and n != 0:
+        if m > n:
+            m = m - n
+            p = p - r
+            q = q - s
+        else:
+            n = n - m
+            r = r - p
+            s = s - q
+    if m == 0:
+        return [n, r, s]
+    if n == 0:
+        return [m, p, q]
+
+def euclide4(a, b):
+    print [a, b]
+    m = a
+    n = b
+
+    p, q, r, s = 1, 0, 0, 1
+    # m = p * a + q * b
+    # n = r * a + s * b
+    while m % n != 0:
+        d = m % n
+        t = m / n
+        if d != 0:
+            m = n
+            n = d
+            r1 = p - t * r
+            s1 = q - t * s
+            p = r
+            q = s
+            r = r1
+            s = s1
+    return [n, r, s]
+
+
+# print euclide3(119,544)
+# print euclide4(119,544)
+print euclide3(6, 21)
+print euclide4(6, 21)
