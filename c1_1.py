@@ -256,11 +256,40 @@ def simplicity_test(n):
         i = i + 1
     return n, 'Yes'
 
+def decimal(n):
+    """
+    1.1.26. Вывести десятичную запись переданного числа
+    """
+    if n == 0:
+        print 0
+        return
+    base = 1
+    a = n
+    #определяем число, являющееся степенью 10, минимально большее заданного
+    while base <= n:
+        base = base * 10
+    base = base / 10
+    while base >= 1:
+        print a / base
+        a = a - (a / base) * base
+        base = base / 10
+
+def decimal_reverse(n):
+    """
+    1.1.27. Вывести десятичную запись переданного числа в обратном порядке
+    """
+    a, base = n, 10
+    while a != 0:
+        print a % base
+        a = a / base
+
 # print euclide3(119,544)
 # print euclide4(119,544)
 # print euclide3(6, 21)
 # print euclide5(7, 21)
 # square2(10)
 # factorization(7399)
-for i in range(100):
-    print simplicity_test(i)
+# for i in range(100):
+#     print simplicity_test(i)
+# decimal(10)
+decimal_reverse(123456789)
