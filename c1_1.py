@@ -201,7 +201,35 @@ def euclide5(a, b):
     else:
         return d * m
 
+def square(n):
+    """
+    1.1.20. Вывести квадраты всех чисел от 0 до n
+    """
+    k = 0
+    while k != n:
+        print k * k
+        k = k + 1
+
+def square2(n):
+    """
+    1.1.21. Вывести квадраты всех чисел от 0 до n, но пользоваться можно только
+    операциями сложения и вычитания, количество действий - n
+    """
+    print 0
+    print 1
+    k1 = 1
+    k = 2
+    # запишем квадрат следующего числа как квадрат суммы предыдущего числа и 1
+    # (k_n)^2 = (k_n-1)^2 + k_n-1 + k_n-1 + 1
+    while k != n:
+        t = k1 + k - 1 + k - 1 + 1
+        print t
+        k1 = t
+        k = k + 1
+
+
 # print euclide3(119,544)
 # print euclide4(119,544)
-print euclide3(6, 21)
-print euclide5(7, 21)
+# print euclide3(6, 21)
+# print euclide5(7, 21)
+square2(10)
