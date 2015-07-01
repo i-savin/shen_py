@@ -201,7 +201,92 @@ def euclide5(a, b):
     else:
         return d * m
 
+def square(n):
+    """
+    1.1.20. Вывести квадраты всех чисел от 0 до n
+    """
+    k = 0
+    while k != n:
+        print k * k
+        k = k + 1
+
+def square2(n):
+    """
+    1.1.21. Вывести квадраты всех чисел от 0 до n, но пользоваться можно только
+    операциями сложения и вычитания, количество действий - n
+    """
+    print 0
+    print 1
+    k1 = 1
+    k = 2
+    # запишем квадрат следующего числа как квадрат суммы предыдущего числа и 1
+    # (k_n)^2 = (k_n-1)^2 + k_n-1 + k_n-1 + 1
+    while k != n:
+        t = k1 + k - 1 + k - 1 + 1
+        print t
+        k1 = t
+        k = k + 1
+
+def factorization(n):
+    """
+    1.1.22 - 1.1.23. Разложить число на простые множители
+    """
+    a = n
+    i = 2
+    while i != a:
+        if a % i == 0:
+            a = a / i
+            print i
+            i = 2
+        else:
+            i = i + 1
+        if i * i > n:
+            break
+    print a
+
+def simplicity_test(n):
+    """
+    1.1.24. Проверить, является ли число простым
+    """
+    a = n
+    i = 2
+    while i * i <= a:
+        if a % i == 0:
+            return n, 'No'
+        i = i + 1
+    return n, 'Yes'
+
+def decimal(n):
+    """
+    1.1.26. Вывести десятичную запись переданного числа
+    """
+    if n == 0:
+        print 0
+        return
+    base = 1
+    a = n
+    #определяем число, являющееся степенью 10, минимально большее заданного
+    while base <= n:
+        base = base * 10
+    base = base / 10
+    while base >= 1:
+        print a / base
+        a = a - (a / base) * base
+        base = base / 10
+
+def decimal_reverse(n):
+    """
+    1.1.27. Вывести десятичную запись переданного числа в обратном порядке
+    """
+    a, base = n, 10
+    while a != 0:
+        print a % base
+        a = a / base
+
 def circle(n):
+    """
+    1.1.28. Найти число натуральных корней неравенства x^2 + y^2 < n
+    """
     x, c = 0,0
     while x * x < n:
         y = 0
@@ -218,6 +303,11 @@ def circle(n):
 # print euclide4(119,544)
 # print euclide3(6, 21)
 # print euclide5(7, 21)
-
+# square2(10)
+# factorization(7399)
+# for i in range(100):
+#     print simplicity_test(i)
+# decimal(10)
+# decimal_reverse(123456789)
 for i in range(1,10):
     print i, circle(i)
