@@ -227,9 +227,40 @@ def square2(n):
         k1 = t
         k = k + 1
 
+def factorization(n):
+    """
+    1.1.22 - 1.1.23. Разложить число на простые множители
+    """
+    a = n
+    i = 2
+    while i != a:
+        if a % i == 0:
+            a = a / i
+            print i
+            i = 2
+        else:
+            i = i + 1
+        if i * i > n:
+            break
+    print a
+
+def simplicity_test(n):
+    """
+    1.1.24. Проверить, является ли число простым
+    """
+    a = n
+    i = 2
+    while i * i <= a:
+        if a % i == 0:
+            return n, 'No'
+        i = i + 1
+    return n, 'Yes'
 
 # print euclide3(119,544)
 # print euclide4(119,544)
 # print euclide3(6, 21)
 # print euclide5(7, 21)
-square2(10)
+# square2(10)
+# factorization(7399)
+for i in range(100):
+    print simplicity_test(i)
