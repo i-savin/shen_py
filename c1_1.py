@@ -201,7 +201,23 @@ def euclide5(a, b):
     else:
         return d * m
 
+def circle(n):
+    x, c = 0,0
+    while x * x < n:
+        y = 0
+        while y * y < n:
+            if x * x + y * y < n:
+                c = c + 1
+            else:
+                break
+            y = y + 1
+        x = x + 1
+    return c
+
 # print euclide3(119,544)
 # print euclide4(119,544)
-print euclide3(6, 21)
-print euclide5(7, 21)
+# print euclide3(6, 21)
+# print euclide5(7, 21)
+
+for i in range(1,10):
+    print i, circle(i)
