@@ -317,6 +317,20 @@ def circle2(n):
             x = x + 1
     return l
 
+def fraction(n,k):
+    """
+    1.1.30. Написать k десятичных знаков в числе 1/n для n>1
+    """
+    a = n
+    i = 0
+    m = 10
+    # print 1.0 / n
+    while i < k:
+        b = m / n
+        print b
+        a = m % n
+        m = a * 10
+        i = i + 1
 # print euclide3(119,544)
 # print euclide4(119,544)
 # print euclide3(6, 21)
@@ -327,6 +341,6 @@ def circle2(n):
 #     print simplicity_test(i)
 # decimal(10)
 # decimal_reverse(123456789)
-
-for i in range(1,10):
-    print i, circle(i)
+# for i in range(1,10):
+#     print i, circle(i)
+fraction(1,5)
