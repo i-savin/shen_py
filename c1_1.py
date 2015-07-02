@@ -292,4 +292,40 @@ def decimal_reverse(n):
 # for i in range(100):
 #     print simplicity_test(i)
 # decimal(10)
-decimal_reverse(123456789)
+# decimal_reverse(123456789)
+
+def circle1(n):
+    x, y, l = 0, 0, 0;
+    while x * x < n:
+        while y * y < n:
+            if x * x + y * y < n:
+                # print x, y
+                l = l + 1
+            else:
+                break
+            y = y + 1
+        y = 0
+        x = x + 1
+    return l
+
+def circle2(n):
+    """
+    1.1.29. Найти количество решений неравенства x^2 + y^2 < n за sqrt(n) операций
+    """
+    x, y, l = 0, 0, 0
+    while y * y < n:
+        if x * x + y * y < n:
+            y = y + 1
+    y = y - 1
+    while x * x < n:
+
+        if x * x + y * y >= n:
+            y = y - 1
+        else:
+            l = l + y + 1
+            x = x + 1
+    return l
+
+for i in range(1, 100):
+    print i, circle1(i), circle2(i)
+# print circle2(2)
