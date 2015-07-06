@@ -6,6 +6,7 @@ def null_array(n):
     1.2.1. Заполнить массив нулями
     """
     a = [0 for i in range(n)]
+    print len(a)
     return a
 
 def copy_array(a):
@@ -49,4 +50,23 @@ def different2(n):
             k = k + 1
     print k
 
-different2(10)
+def different3(n, k):
+    """
+    1.2.8. Найти количество различных элементов массива, содержащего 
+        числа от 1 до k за k + n действий
+    """
+    a = [randint(1,k) for i in range(n)]
+    print a
+    b = null_array(k)
+    l = 0
+    for i in range(n):
+        b[a[i] - 1] = b[a[i] - 1] + 1
+    print b
+    for i in range(k):
+        if b[i] != 0:
+            l = l + 1
+    print sorted(a)
+    print l
+
+
+different3(10, 10)
