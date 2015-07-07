@@ -139,15 +139,28 @@ def d_polinom(a, x):
         b = b * x + a[n-1-k]
     print b
 
+def mul_polinom(a, b):
+    """
+    1.2.15. В массивах a и b содержатся коэффициенты двух многочленов. Записать в массив
+    c коэффициенты их произведения (элемент массива с индексом i соответствует
+    коэффициенту при x в степени i)
+    """
+    c = null_array(len(a) + len(b))
+    for i in range(len(a)):
+        for j in range(len(b)):
+            c[i+j] = c[i+j] + a[i] * b[j]
+    print c
 
 k = 10
-n = 4
+n = 2
 a = [randint(1,k) for i in range(n)]
-print a
+b = [randint(1,k) for i in range(n)]
+print a, b
 
 # different(a)
 # different2(a)
 # different3(k, n)
 # reverse_array(a)
-polinom(a, 2)
-d_polinom(a, 2)
+# polinom(a, 2)
+# d_polinom(a, 2)
+mul_polinom(a, b)
