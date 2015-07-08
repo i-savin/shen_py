@@ -152,6 +152,9 @@ def mul_polinom(a, b):
     print c
 
 def same_elements(a, b):
+    """
+    1.2.17. Даны два возрастающих массива. Найти количество общих элементов
+    """
     i, j = 0, 0
     k = 0
     c = -1
@@ -167,10 +170,29 @@ def same_elements(a, b):
             i = i + 1
             j = j + 1
 
+def same_elements2(a, b):
+    """
+    1.2.18. Даны два возрастающих массива. Найти количество общих элементов.
+    Случайно здесь же решил и 1.2.19 - то же самое, только массивы
+    неубывающие
+    """
+    i, j = 0, 0
+    k = 0
+    while i < len(a) and j < len(b):
+        if a[i] < b[j]:
+            i = i + 1
+        elif b[j] < a[i]:
+            j = j + 1
+        else:
+            print a[i]
+            while a[i] == b[j] and i < len(a) and j < len(b):
+                i = i + 1
+                j = j + 1
+
 k = 10
 n = 10
-a = [randint(1,k) for i in range(n)]
-b = [randint(1,k) for i in range(n * 2)]
+a = [1 for i in range(n)]
+b = [1 for i in range(n + 5)]
 print sorted(a), sorted(b)
 
 # different(a)
