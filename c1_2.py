@@ -151,11 +151,27 @@ def mul_polinom(a, b):
             c[i+j] = c[i+j] + a[i] * b[j]
     print c
 
+def same_elements(a, b):
+    i, j = 0, 0
+    k = 0
+    c = -1
+    while i < len(a) and j < len(b):
+        if a[i] < b[j]:
+            i = i + 1
+        elif b[j] < a[i]:
+            j = j + 1
+        else:
+            if a[i] != c:
+                print a[i]
+                c = a[i]
+            i = i + 1
+            j = j + 1
+
 k = 10
-n = 2
+n = 10
 a = [randint(1,k) for i in range(n)]
-b = [randint(1,k) for i in range(n)]
-print a, b
+b = [randint(1,k) for i in range(n * 2)]
+print sorted(a), sorted(b)
 
 # different(a)
 # different2(a)
@@ -163,4 +179,5 @@ print a, b
 # reverse_array(a)
 # polinom(a, 2)
 # d_polinom(a, 2)
-mul_polinom(a, b)
+# mul_polinom(a, b)
+same_elements(sorted(a), sorted(b))
