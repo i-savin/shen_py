@@ -157,24 +157,19 @@ def same_elements(a, b):
     """
     i, j = 0, 0
     k = 0
-    c = -1
     while i < len(a) and j < len(b):
         if a[i] < b[j]:
             i = i + 1
         elif b[j] < a[i]:
             j = j + 1
         else:
-            if a[i] != c:
-                print a[i]
-                c = a[i]
+            print a[i]
             i = i + 1
             j = j + 1
 
 def same_elements2(a, b):
     """
-    1.2.18. Даны два возрастающих массива. Найти количество общих элементов.
-    Случайно здесь же решил и 1.2.19 - то же самое, только массивы
-    неубывающие
+    1.2.18. Даны два неубывающих массива. Найти количество общих элементов.
     """
     i, j = 0, 0
     k = 0
@@ -185,14 +180,54 @@ def same_elements2(a, b):
             j = j + 1
         else:
             print a[i]
-            while a[i] == b[j] and i < len(a) and j < len(b):
+            while i < len(a) and j < len(b) and a[i] == b[j]:
                 i = i + 1
                 j = j + 1
 
+def diff_elements(a, b):
+    """
+    1.2.19. Даны два неубывающих массива. Найти количество различающихся
+     элементов.
+    """
+    i, j = 0, 0
+    k = 0
+    while i < len(a) and j < len(b):
+        while i < len(a) and j < len(b):
+            if a[i] < b[j]:
+                print a[i]
+                c = a[i]
+                i = i + 1
+                k = k + 1
+            else:
+                break
+        while i < len(a) and j < len(b):
+            if b[j] < a[i]:
+                print b[j]
+                c = b[j]
+                k = k + 1
+                j = j + 1
+            else:
+                break
+        if i < len(a) and j < len(b) and a[i] == b[j]:
+            c = a[i]
+            while i < len(a) and a[i] == c:
+                i = i + 1
+            while j < len(b) and b[j] == c:
+                j = j + 1
+    while i < len(a):
+        print a[i]
+        k = k + 1
+        i = i + 1
+    while j < len(b):
+        print b[j]
+        k = k + 1
+        j = j + 1
+    print 'k =',k
+
 k = 10
 n = 10
-a = [1 for i in range(n)]
-b = [1 for i in range(n + 5)]
+a = [randint(0,k) for i in range(n)]
+b = [randint(0,k) for i in range(n)]
 print sorted(a), sorted(b)
 
 # different(a)
@@ -202,4 +237,5 @@ print sorted(a), sorted(b)
 # polinom(a, 2)
 # d_polinom(a, 2)
 # mul_polinom(a, b)
-same_elements(sorted(a), sorted(b))
+# same_elements2(sorted(a), sorted(b))
+diff_elements(sorted(a), sorted(b))
