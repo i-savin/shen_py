@@ -188,6 +188,7 @@ def diff_elements(a, b):
     """
     1.2.19. Даны два неубывающих массива. Найти количество различающихся
      элементов.
+     //TODO сделать рефакторинг
     """
     i, j = 0, 0
     k = 0
@@ -236,7 +237,34 @@ def diff_elements(a, b):
         j = j + 1
     print 'k =',k
 
-k = 10
+def merge_arrays(a, b):
+    """
+    1.2.20. Объединить два неубывающих массива в один неубывающий
+    """
+    c = null_array(len(a) + len(b))
+    i, j, k = 0, 0, 0
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            c[k] = a[i]
+            k = k + 1
+            i = i + 1
+        else:
+            c[k] = b[j]
+            k = k + 1
+            j = j + 1
+    while i < len(a):
+        c[k] = a[i]
+        k = k + 1
+        i = i + 1
+    while j < len(b):
+        c[k] = b[j]
+        k = k + 1
+        j = j + 1
+    print c
+
+
+
+k = 50
 n = 10
 a = [randint(0,k) for i in range(n)]
 b = [randint(0,k) for i in range(n)]
@@ -250,4 +278,5 @@ print sorted(a), sorted(b)
 # d_polinom(a, 2)
 # mul_polinom(a, b)
 # same_elements2(sorted(a), sorted(b))
-diff_elements(sorted(a), sorted(b))
+# diff_elements(sorted(a), sorted(b))
+merge_arrays(sorted(a), sorted(b))
