@@ -198,6 +198,11 @@ def diff_elements(a, b):
                 c = a[i]
                 i = i + 1
                 k = k + 1
+                while i < len(a) and j < len(b):
+                    if a[i] == c:
+                        i = i + 1
+                    else:
+                        break
             else:
                 break
         while i < len(a) and j < len(b):
@@ -206,6 +211,11 @@ def diff_elements(a, b):
                 c = b[j]
                 k = k + 1
                 j = j + 1
+                while i < len(a) and j < len(b):
+                    if b[j] == c:
+                        j = j + 1
+                    else:
+                        break
             else:
                 break
         if i < len(a) and j < len(b) and a[i] == b[j]:
@@ -215,12 +225,14 @@ def diff_elements(a, b):
             while j < len(b) and b[j] == c:
                 j = j + 1
     while i < len(a):
-        print a[i]
-        k = k + 1
+        if a[i] != c:
+            print a[i]
+            k = k + 1
         i = i + 1
     while j < len(b):
-        print b[j]
-        k = k + 1
+        if b[j] != c:
+            print b[j]
+            k = k + 1
         j = j + 1
     print 'k =',k
 
