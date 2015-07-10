@@ -257,12 +257,32 @@ def merge_arrays(a, b):
     print c
 
 
+def array_intersection(a, b):
+    """
+    1.2.21. Даны два неубывающих массива. Найти их пересечение, то есть массив,
+    содержащий их общие элементы, причем кратность каждого элемента
+    результирующего массива равна минимальной кратности в заданных массивах.
+    Число действий k + l
+    """
+    i, j, c = 0, 0, []
+    while i < len(a) and j < len(b):
+        while i < len(a) and j < len(b) and a[i] == b[j]:
+            c.append(a[i])
+            i = i + 1
+            j = j + 1
+        if i < len(a) and j < len(b) and a[i] < b[j]:
+            i = i + 1
+        elif i < len(a) and j < len(b) and b[j] < a[i]:
+            j = j + 1
 
-k = 50
+    print c
+
+k = 20
 n = 10
-a = [randint(0,k) for i in range(n)]
-b = [randint(0,k) for i in range(n)]
-print sorted(a), sorted(b)
+a = [randint(1,k) for i in range(n)]
+b = [randint(1,k) for i in range(n + 5)]
+print sorted(a)
+print sorted(b)
 
 # different(a)
 # different2(a)
@@ -272,5 +292,6 @@ print sorted(a), sorted(b)
 # d_polinom(a, 2)
 # mul_polinom(a, b)
 # same_elements2(sorted(a), sorted(b))
-diff_elements(sorted(a), sorted(b))
+# diff_elements(sorted(a), sorted(b))
 # merge_arrays(sorted(a), sorted(b))
+array_intersection(sorted(a), sorted(b))
