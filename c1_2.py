@@ -277,27 +277,37 @@ def array_intersection(a, b):
     print c
 
 def arrays_sum(a, b, q):
+    """
+    1.2.22. Даны два неубывающих массива и некоторое целое число. Найти два
+    элемента из этих массиво, сумма которых максимально близка к заданному числу
+    """
     # d = a[0] - (q - b[len(b)-1])
     i = 0
     j = len(b) - 1
     i_max = 0
     j_max = len(b) - 1
     s_max = a[0] + b[len(b)-1]
-    d_max = abs(a[0] + b[len(b)-1] - q)
+    d_min = abs(a[0] + b[len(b)-1] - q)
     while i < len(a) and j >= 0:
         d = a[i] - (q - b[j])
+        # print 'd =', d
         s = a[i] + b[j]
         if d == 0: #a[i] == q - b[j]:
+            i_max = i
+            j_max = j
+            s_max = s
             break
         elif d < 0:
             i = i + 1
-            if abs(d) < d_max:
+            if abs(d) < d_min:
+                d_min = abs(d)
                 i_max = i
                 j_max = j
                 s_max = s
         else:
             j = j - 1
-            if abs(d) < d_max:
+            if abs(d) < d_min:
+                d_min = abs(d)
                 i_max = i
                 j_max = j
                 s_max = s
@@ -307,7 +317,7 @@ def arrays_sum(a, b, q):
 k = 20
 n = 10
 a = [randint(1,k) for i in range(n)]
-b = [randint(1,k) for i in range(n)]
+b = [randint(1,k) for i in range(n + 5)]
 print sorted(a)
 print sorted(b)
 
@@ -322,4 +332,4 @@ print sorted(b)
 # diff_elements(sorted(a), sorted(b))
 # merge_arrays(sorted(a), sorted(b))
 # array_intersection(sorted(a), sorted(b))
-arrays_sum(a, b, 10)
+arrays_sum(sorted(a), sorted(b), 100)
