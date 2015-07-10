@@ -256,7 +256,6 @@ def merge_arrays(a, b):
         j = j + 1
     print c
 
-
 def array_intersection(a, b):
     """
     1.2.21. Даны два неубывающих массива. Найти их пересечение, то есть массив,
@@ -277,10 +276,38 @@ def array_intersection(a, b):
 
     print c
 
+def arrays_sum(a, b, q):
+    # d = a[0] - (q - b[len(b)-1])
+    i = 0
+    j = len(b) - 1
+    i_max = 0
+    j_max = len(b) - 1
+    s_max = a[0] + b[len(b)-1]
+    d_max = abs(a[0] + b[len(b)-1] - q)
+    while i < len(a) and j >= 0:
+        d = a[i] - (q - b[j])
+        s = a[i] + b[j]
+        if d == 0: #a[i] == q - b[j]:
+            break
+        elif d < 0:
+            i = i + 1
+            if abs(d) < d_max:
+                i_max = i
+                j_max = j
+                s_max = s
+        else:
+            j = j - 1
+            if abs(d) < d_max:
+                i_max = i
+                j_max = j
+                s_max = s
+    print i_max, j_max, s_max
+
+
 k = 20
 n = 10
 a = [randint(1,k) for i in range(n)]
-b = [randint(1,k) for i in range(n + 5)]
+b = [randint(1,k) for i in range(n)]
 print sorted(a)
 print sorted(b)
 
@@ -294,4 +321,5 @@ print sorted(b)
 # same_elements2(sorted(a), sorted(b))
 # diff_elements(sorted(a), sorted(b))
 # merge_arrays(sorted(a), sorted(b))
-array_intersection(sorted(a), sorted(b))
+# array_intersection(sorted(a), sorted(b))
+arrays_sum(a, b, 10)
