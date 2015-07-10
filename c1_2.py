@@ -151,11 +151,32 @@ def mul_polinom(a, b):
             c[i+j] = c[i+j] + a[i] * b[j]
     print c
 
-k = 10
-n = 2
+def array_intersection(a, b):
+    """
+    1.2.21. Даны два неубывающих массива. Найти их пересечение, то есть массив, 
+    содержащий их общие элементы, причем кратность каждого элемента
+    результирующего массива равна минимальной кратности в заданных массивах.
+    Число действий k + l
+    """
+    i, j, c = 0, 0, []
+    while i < len(a) and j < len(b):
+        while i < len(a) and j < len(b) and a[i] == b[j]:
+            c.append(a[i])
+            i = i + 1
+            j = j + 1
+        if i < len(a) and j < len(b) and a[i] < b[j]:
+            i = i + 1
+        elif i < len(a) and j < len(b) and b[j] < a[i]:
+            j = j + 1
+
+    print c
+
+k = 20
+n = 10
 a = [randint(1,k) for i in range(n)]
-b = [randint(1,k) for i in range(n)]
-print a, b
+b = [randint(1,k) for i in range(n + 5)]
+print sorted(a)
+print sorted(b)
 
 # different(a)
 # different2(a)
@@ -163,4 +184,5 @@ print a, b
 # reverse_array(a)
 # polinom(a, 2)
 # d_polinom(a, 2)
-mul_polinom(a, b)
+# mul_polinom(a, b)
+array_intersection(sorted(a), sorted(b))
