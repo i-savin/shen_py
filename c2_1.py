@@ -23,4 +23,41 @@ def next(x, n):
     x[p] = x[p] + 1
     return x
 
-sequence(2, 2)
+def sequence2(n, k):
+    """
+    Напечатать все последовательности длины k из чисел 0..n
+    """
+    x = [0 for i in range(k)]
+    last = [n for i in range(k)]
+    print x
+    while x != last:
+        x = next2(x, n)
+        print x
+
+def next2(x, n):
+    p = len(x) - 1
+    while x[p] == n:
+        x[p] = 0
+        p = p - 1
+    x[p] = x[p] + 1
+    return x
+
+def subset(k):
+    """
+    2.1.3. Напечатать все подмножества множеств {1...k}
+    Генерим все возможные последовательности 0 и 1 длины k и затем для индексов,
+    значения в которых равно 1, выводим число
+    """
+    z = [i for i in range(1, k)]
+    x = [0 for i in range(k)]
+    last = [1 for i in range(k)]
+    while x != last:
+        x = next2(x, 1)
+        y = []
+        for i in range(k):
+            if x[i] == 1:
+                y.append(i + 1)
+        print y
+
+# sequence2(1, 5)
+subset(3)
